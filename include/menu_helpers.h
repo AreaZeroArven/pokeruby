@@ -32,7 +32,7 @@ u8 sub_80F9284(void);
 u8 sub_80F92BC(void);
 bool8 sub_80F92F4(u16);
 bool8 sub_80F931C(u16);
-bool8 sub_80F9344(void);
+bool8 MenuHelpers_IsLinkActive(void);
 void sub_80F9368(void);
 void ClearVideoCallbacks(void);
 void ClearVerticalScrollIndicatorPalettes(void);

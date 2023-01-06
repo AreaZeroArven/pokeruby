@@ -814,7 +814,7 @@ bool8 sub_809DA84(void)
 
 static void sub_809DE44(void)
 {
-    while (sub_809DA84() != TRUE && sub_80F9344() != TRUE)
+    while (sub_809DA84() != TRUE && MenuHelpers_IsLinkActive() != TRUE)
         ;
 }
 
@@ -1601,7 +1601,7 @@ void SummaryScreenHandleUpDownInput(u8 taskId, s8 direction)
     }
     else
     {
-        if (sub_80F9344() == TRUE && IsLinkDoubleBattle() == TRUE)
+        if (MenuHelpers_IsLinkActive() == TRUE && IsLinkDoubleBattle() == TRUE)
         {
             var3 = sub_809F3CC(direction);
         }
@@ -2765,7 +2765,7 @@ static void PrintNumRibbons(struct Pokemon *mon)
 static void PrintHeldItemName(u16 itemId, u8 left, u8 top)
 {
     if (itemId == ITEM_ENIGMA_BERRY
-     && sub_80F9344() == TRUE
+     && MenuHelpers_IsLinkActive() == TRUE
      && IsLinkDoubleBattle() == TRUE
      && (pssData.monIndex == 1 || pssData.monIndex == 4 || pssData.monIndex == 5))
         StringCopy(gStringVar1, ItemId_GetName(itemId));

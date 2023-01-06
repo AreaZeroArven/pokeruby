@@ -284,7 +284,7 @@ bool8 sub_80F931C(u16 itemId)
     return FALSE;
 }
 
-bool8 sub_80F9344(void)
+bool8 MenuHelpers_IsLinkActive(void)
 {
     if (is_c1_link_related_active() == TRUE || gReceivedRemoteLinkPlayers == 1)
     {

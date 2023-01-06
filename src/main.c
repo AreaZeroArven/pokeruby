@@ -83,25 +83,9 @@ static void WaitForVBlank(void);
 
 void AgbMain()
 {
-#if MODERN
     // Modern compilers are liberal with the stack on entry to this function,
     // so RegisterRamReset may crash if it resets IWRAM.
-    RegisterRamReset(RESET_ALL & ~RESET_IWRAM);
-    asm("mov\tr1, #0xC0\n"
-        "\tlsl\tr1, r1, #0x12\n"
-        "\tmov r2, #0xFC\n"
-        "\tlsl r2, r2, #0x7\n"
-        "\tadd\tr2, r1, r2\n"
-        "\tmov\tr0, #0\n"
-        "\tmov\tr3, r0\n"
-        "\tmov\tr4, r0\n"
-        "\tmov\tr5, r0\n"
-        ".LCU0:\n"
-        "\tstmia r1!, {r0, r3, r4, r5}\n"
-        "\tcmp\tr1, r2\n"
-        "\tbcc\t.LCU0\n"
-    );
-#else
+#if !MODERN
     RegisterRamReset(RESET_ALL);
 #endif //MODERN
     REG_WAITCNT = WAITCNT_PREFETCH_ENABLE | WAITCNT_WS0_S_1 | WAITCNT_WS0_N_3;
@@ -138,7 +122,7 @@ void AgbMain()
          && (gMain.heldKeysRaw & B_START_SELECT) == B_START_SELECT)
             DoSoftReset();
 
-        if (gLink.sendQueue.count > 1 && sub_8055910() == 1)
+        if (gLink.sendQueue.count > 1 && Overworld_SendKeysToLinkIsRunning() == TRUE)
         {
             gLinkTransferringData = TRUE;
             UpdateLinkAndCallCallbacks();
@@ -151,7 +135,7 @@ void AgbMain()
 
             if (gLink.recvQueue.count > 1)
             {
-                if (sub_80558AC() == 1)
+                if (Overworld_RecvKeysFromLinkIsRunning() == 1)
                 {
                     gMain.newKeys = 0;
                     gLinkTransferringData = TRUE;
@@ -324,7 +308,7 @@ static void VBlankIntr(void)
     gPcmDmaCounter = gSoundInfo.pcmDmaCounter;
 
     m4aSoundMain();
-    sub_800C35C();
+    TryReceiveLinkBattleData();
     Random();
 
     INTR_CHECK |= INTR_FLAG_VBLANK;

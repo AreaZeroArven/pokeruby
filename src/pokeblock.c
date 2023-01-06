@@ -381,7 +381,7 @@ void sub_810B96C(void)
             CreateTask(sub_810BF7C, 0);
             break;
         }
-    } while (sub_80F9344() != TRUE);
+    } while (MenuHelpers_IsLinkActive() != TRUE);
 }
 
 static bool8 sub_810B998(void)

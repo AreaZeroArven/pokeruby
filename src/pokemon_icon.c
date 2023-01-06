@@ -1113,7 +1113,7 @@ u16 GetUnownLetterByPersonality(u32 personality)
     return (((personality & 0x3000000) >> 18) | ((personality & 0x30000) >> 12) | ((personality & 0x300) >> 6) | (personality & 0x3)) % 0x1C;
 }
 
-u16 sub_809D4A8(u16 species)
+u16 GetIconSpeciesNoPersonality(u16 species)
 {
     u16 value;
 
@@ -1160,7 +1160,7 @@ void SafeLoadMonIconPalette(u16 species)
         LoadSpritePalette(&gMonIconPaletteTable[palIndex]);
 }
 
-void sub_809D580(u16 species)
+void LoadMonIconPalette(u16 species)
 {
     u8 palIndex = gMonIconPaletteIndices[species];
     if (IndexOfSpritePaletteTag(gMonIconPaletteTable[palIndex].tag) == 0xFF)

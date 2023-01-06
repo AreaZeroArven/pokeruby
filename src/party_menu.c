@@ -723,7 +723,7 @@ void CB2_InitPartyMenu(void)
 {
     while (InitPartyMenu() != TRUE)
     {
-        if (sub_80F9344() == TRUE)
+        if (MenuHelpers_IsLinkActive() == TRUE)
             return;
     }
 

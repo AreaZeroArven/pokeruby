@@ -498,7 +498,7 @@ static bool8 sub_80A34B4(void)
             ResetTasks();
             return TRUE;
         }
-        if (sub_80F9344() == TRUE)
+        if (MenuHelpers_IsLinkActive() == TRUE)
             break;
     }
     return FALSE;
@@ -1455,7 +1455,7 @@ static void sub_80A4BF0(u16 *a)
     {
         Menu_DrawStdWindowFrame(0, 7, 13, 12);
         sub_80A4008(a, 1, 8, 12, 4);
-        if (sub_80F9344() == TRUE && sReturnLocation == RETURN_TO_FIELD_5)
+        if (MenuHelpers_IsLinkActive() == TRUE && sReturnLocation == RETURN_TO_FIELD_5)
         {
             sub_80A7834(1, 0);
         }
@@ -2020,7 +2020,7 @@ static void OnItemSelect_Field05(u8 taskId)
     gTasks[taskId].data[10] = gBagPocketScrollStates[sCurrentBagPocket].scrollTop + gBagPocketScrollStates[sCurrentBagPocket].cursorPos + 1;
     sub_80A48E8(taskId, gBagPocketScrollStates[sCurrentBagPocket].cursorPos, gBagPocketScrollStates[sCurrentBagPocket].cursorPos);
     sub_80A73FC();
-    if (sub_80F9344() == TRUE && sReturnLocation != RETURN_TO_FIELD_5)
+    if (MenuHelpers_IsLinkActive() == TRUE && sReturnLocation != RETURN_TO_FIELD_5)
     {
         sub_80A57C4();
         gTasks[taskId].func = sub_80A5888;
@@ -2071,7 +2071,7 @@ void sub_80A5B40(void)
             gUnknown_02038563 = CreateTask(sub_80A50C8, 0);
             break;
         }
-        if (sub_80F9344() == TRUE)
+        if (MenuHelpers_IsLinkActive() == TRUE)
             break;
     }
 }
@@ -2148,7 +2148,7 @@ void sub_80A5D04(void)
             gUnknown_02038563 = CreateTask(sub_80A50C8, 0);
             break;
         }
-        if (sub_80F9344() == TRUE)
+        if (MenuHelpers_IsLinkActive() == TRUE)
             break;
     }
 }
@@ -2594,7 +2594,7 @@ static void sub_80A6940(void)
             sub_80A699C();
             break;
         }
-        if (sub_80F9344() == TRUE)
+        if (MenuHelpers_IsLinkActive() == TRUE)
             break;
     }
 }
@@ -2769,7 +2769,7 @@ static void sub_80A6D98(void)
             gUnknown_02038563 = CreateTask(sub_80A50C8, 0);
             break;
         }
-        if (sub_80F9344() == TRUE)
+        if (MenuHelpers_IsLinkActive() == TRUE)
             break;
     }
 }
@@ -2904,7 +2904,7 @@ static void sub_80A7150(void)
             gTasks[gUnknown_02038563].data[15] = 0;
             break;
         }
-        if (sub_80F9344() == TRUE)
+        if (MenuHelpers_IsLinkActive() == TRUE)
             break;
     }
 }

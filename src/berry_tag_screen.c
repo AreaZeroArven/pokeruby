@@ -174,7 +174,7 @@ void BerryTagScreen_814625C(u8 taskId)
             CreateTask(sub_8146480, 0);
             return;
         }
-    } while (sub_80F9344() != TRUE);
+    } while (MenuHelpers_IsLinkActive() != TRUE);
 }
 
 static void sub_8146288(void)

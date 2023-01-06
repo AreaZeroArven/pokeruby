@@ -596,7 +596,7 @@ void CB2_PreparePokeblockFeedScene(void)
             LaunchPokeblockFeedTask(1);
             break;
         }
-        if (sub_80F9344() == 1)
+        if (MenuHelpers_IsLinkActive() == 1)
             break;
     }
 }

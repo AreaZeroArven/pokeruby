@@ -510,7 +510,7 @@ void Task_HandleSendLinkBuffersData(u8 taskId)
 }
 
 //fix me
-void sub_800C35C(void)
+void TryReceiveLinkBattleData(void)
 {
     u8 i;  //r4
     s32 j;  //r2
